@@ -3,7 +3,7 @@ backend:
   repo: <% GITHUB_REPOSITORY %> # Gulp will replace this with your GitHub repository
   branch: master # Branch to update (master by default)
   #site_domain: netlify.coursepad.net
-  base_url: netlify.coursepad.net:3003
+  base_url: http://netlify.coursepad.net:3003
 
 media_folder: "site/static/img" # Folder where user uploaded files should go
 public_folder: "img"
