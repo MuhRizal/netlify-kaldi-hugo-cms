@@ -10,13 +10,25 @@
       <p>{{ .Description }}</p>
       {{ if .Params.image }}<img src="{{ .Params.image }}" alt="{{ .Title }}" />{{ end }}
       {{ .Content }}
+	
+	  {{ if .Params.video }}
+		<div id="showVideo"></div>
+		<script>
+			var videoname={{ .Params.video }};
+			var videoPieces = videoname.split('.');
+			if(videoPieces.pop()=="mp4"){
+				document.getElementById("showVideo").innerHTML="<video controls><source src='{{ .Params.video }}' type='video/mp4'>Your browser does not support the video tag.</video>";
+			}
+		</script>
+	  {{ end }}
+	  
 	  {{ if .Params.file }}
-	  Download file : <a href="{{ .Params.file }}" alt="{{ .Title }}" id="showFile">{{ .Params.file }}</a>
-	  <script>
-		var filename={{ .Params.file }};
-		var pieces = filename.split('/');
-		document.getElementById("showFile").innerHTML=pieces.pop();
-	  </script>
+		<p>Download file : <a href="{{ .Params.file }}" alt="{{ .Title }}" id="showFile">{{ .Params.file }}</a></p>
+		<script>
+			var filename={{ .Params.file }};
+			var pieces = filename.split('/');
+			document.getElementById("showFile").innerHTML=pieces.pop();
+		</script>
 	  {{ end }}
     </div>
   </div>
