@@ -10,6 +10,14 @@
       <p>{{ .Description }}</p>
       {{ if .Params.image }}<img src="{{ .Params.image }}" alt="{{ .Title }}" />{{ end }}
       {{ .Content }}
+	  {{ if .Params.file }}
+	  Download file : <a href="{{ .Params.file }}" alt="{{ .Title }}" id="showFile">{{ .Params.file }}</a>
+	  <script>
+		var filename={{ .Params.file }};
+		var pieces = filename.split('/');
+		document.getElementById("showFile").innerHTML=pieces.pop();
+	  </script>
+	  {{ end }}
     </div>
   </div>
 {{ partial "footer" . }}
